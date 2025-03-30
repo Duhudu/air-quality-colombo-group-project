@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+
+</head>
+<body>
+    <!-- Link to the Sensors page -->
+    <div class="NavBar">
+        <h3>Admin Home</h3>
+        @Html.ActionLink("DashBoard", "DashboardAdmin", "Admin")
+        @Html.ActionLink("Sensor Management", "sensor", "Admin")
+        @*@Html.ActionLink("User Management", "userManagement", "Admin")
+        @Html.ActionLink("Create User", "createUser", "Admin")
+        @Html.ActionLink("Profile", "profile", "Admin")
+        @Html.ActionLink("Dashboard For user", "HomeForUser", "Views")*@
+
+
+    </div>
+
+    
+
+</body>
+</html>
+

@@ -4,11 +4,52 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 
 </head>
 <body>
 
     <h1>Home Page</h1>
+    <h4>Table to show data temp</h4>
+
+    <table id="airQuality">
+        <thead>
+            <tr>
+                <th> Name: </th>
+                <th> Location: </th>
+                <th> Statues</th>
+                <th> Latitude</th>
+                <th> Longitude</th>
+                <th> PM2.5: </th>
+                <th> PM10: </th>
+                <th> PM1: </th>
+                <th> RH: </th>
+                <th> Temp: </th>
+                <th> Wind: </th>
+                <th> Aqi: </th>
+                <th> Date: </th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            Rows will be dynamically created here
+        </tbody>
+
+    </table>
+
+    <div id="map" style="height: 500px;"></div>
+
+    @*<canvas id="sensorChart" style="height: 400px; margin-top: 20px;"></canvas>*@
+    <canvas id="sensorChart" width="800" height="400"></canvas>
+
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @*Include jQuery from CDN*@
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/User/AirQuality.js"></script>
 
 </body>
 </html>
