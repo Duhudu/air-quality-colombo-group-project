@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    <!-- Link to the Sensors page -->
+    <div class="NavBar">
+        <h3>Sensor Management</h3>
+        @Html.ActionLink("DashBoard", "DashboardAdmin", "Admin")
+        @Html.ActionLink("Sensor Management", "sensor", "Admin")
+        @*@Html.ActionLink("User Management", "userManagement", "Admin")
+            @Html.ActionLink("Create User", "createUser", "Admin")
+            @Html.ActionLink("Profile", "profile", "Admin")
+            @Html.ActionLink("Dashboard For user", "HomeForUser", "Views")*@
+
+
+    </div>
+    <!--End of NavBar-->
+    <!--Body Section-->
+    <!--Search Bar to find sensor-->
+    <div>
+        <label for="searchSensor">Seach Sensor by Location</label>
+        <input type="text" id="searchSensor" name="searchSensor" placeholder="Enter Sensor Loaction" />
+        <button id="searchSensorBtn" type="button">Search</button>
+
+    </div>
+    <!--End of Search bar section-->
+    <!--Dynamic Table to show Sensors-->
+    <table id="sensorTable" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically created here -->
+        </tbody>
+    </table>
+
+    <!--End of table section-->
+    <!--Form For Add New and Edit Form -->
+    <div id="sensorForm">
+        <h3 id="formTitle">Add New Sensor</h3>
+        <button id="backToAddNew" type="button" style="display:none;">Back to Add New</button>
+        <form id="sensorFormData">
+            <label for="name">Sensor Name: </label>
+            <input type="text" id="name" name="name" required />
+            <br />
+            <label for="location">Sensor Location: </label>
+            <input type="text" id="location" name="location" required />
+            <br />
+            <label for="latitude">Sensor Latitude: </label>
+            <input type="text" id="latitude" name="latitude" required />
+            <br />
+            <label for="longitude">Sensor Longitude: </label>
+            <input type="text" id="longitude" name="longitude" required />
+            <br />
+            <label for="status">Status: </label>
+            <select id="status" name="status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+            <br />
+            <button id="submitSensor" type="button">Submit</button>
+        </form>
+    </div>
+    <!--End of Form-->
+    <!--End of Body Section-->
+    <!--Footer-->
+    <!--End of Footer-->
+    <!--JS section-->
+    <!-- Include jQuery from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Link to the separate JS file -->
+    <script src="~/Scripts/Admin/sensorManagement.js"></script>
+
+</body>
+</html>
