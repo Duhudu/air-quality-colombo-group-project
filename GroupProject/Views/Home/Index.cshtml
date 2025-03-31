@@ -1,61 +1,85 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    var userRole = Session["UserRole"] as string;
 }
 
 <html>
 <head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Leaflet CSS (Always ensure this is included first for styling) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          />
+    @*<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />*@
 
-
+    <!-- Additional custom styles (if any) -->
+    <style>
+        #map {
+            height: 500px;
+        }
+        /* Ensure the map container has a fixed height */
+        #sensorChart {
+            width: 800px;
+            height: 400px;
+            margin-top: 20px;
+        }
+        /* Chart dimensions */
+    </style>
 </head>
 <body>
+    <!--nav bar-->
+    <nav>
+        <ul>
+            <!-- Link visible to everyone -->
+            <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+
+            <!-- Links for Admin and SuperAdmin -->
+            @if (userRole == "Admin" || userRole == "SuperAdmin")
+            {
+                <li>@Html.ActionLink("Dashboard For Admins", "DashboardAdmin", "Admin")</li>
+                <li>@Html.ActionLink("Sensor Management", "Sensor", "Admin")</li>
+            }
+
+            <!-- Links only for SuperAdmin -->
+            @if (userRole == "SuperAdmin")
+            {
+                <li>@Html.ActionLink("User Management", "UserManagement", "Admin")</li>
+            }
+
+            <!-- If user is logged in, show the logout link -->
+            @if (Session["UserName"] != null)
+            {
+                
+                <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                
+            }
+            else
+            {
+                <!-- If user is not logged in, show login/register links -->
+                <li>@Html.ActionLink("Login", "LogIn", "Home")</li>
+                <li>@Html.ActionLink("Register", "CreateAccount", "Home")</li>
+            }
+        </ul>
+    </nav>
+    <!--End of nvabar-->
 
     <h1>Home Page</h1>
-    <!--Nav bar-->
-    <!--End of nav bar-->
-    @*<h4>Table to show data temp</h4>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Placeholder for the map -->
+    @*<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>**@
+    <div id="map"></div>
 
-    <table id="airQuality">
-        <thead>
-            <tr>
-                <th> Name: </th>
-                <th> Location: </th>
-                <th> Statues: </th>
-                <th> Latitude</th>
-                <th> Longitude</th>
-                <th> PM2.5: </th>
-                <th> PM10: </th>
-                <th> PM1: </th>
-                <th> RH: </th>
-                <th> Temp: </th>
-                <th> Wind: </th>
-                <th> Aqi: </th>
-                <th> Date: </th>
+    <!-- Placeholder for the chart -->
+    <canvas id="sensorChart"></canvas>
 
-            </tr>
-
-        </thead>
-        <tbody>
-            Rows will be dynamically created here
-        </tbody>
-
-    </table>*@
-
-    <div id="map" style="height: 500px;"></div>
-
-    @*<canvas id="sensorChart" style="height: 400px; margin-top: 20px;"></canvas>*@
-    <canvas id="sensorChart" width="800" height="400"></canvas>
-
-
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Include Leaflet JS for map functionality (ensure this is loaded before your custom JS) -->
+    @*<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>*@
+    <!-- Include Chart.js for charting functionality -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    @*Include jQuery from CDN*@
+    <!-- Include jQuery (required for your AJAX calls) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/Scripts/User/AirQuality.js"></script>
-    
-    
-    
+
+    <!-- Link to your custom JS file (ensure the path is correct) -->
+    <script src="~/Scripts/User/AirQualityC.js"></script>
 
 </body>
 </html>

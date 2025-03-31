@@ -191,6 +191,119 @@ namespace GroupProject.Controllers.Admin
             }
         }
 
+        //function to see if all sensors active 
+        [HttpGet]
+        public JsonResult GetSensorStatus(bool checkForActive = false)
+        {
+            List<SensorStatusModel> sensors = new List<SensorStatusModel>();
+            int statusCount = 0;
 
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT sensorStatus FROM Sensor";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var sensorStatus = new SensorStatusModel
+                                {
+                                    Status = reader["sensorStatus"].ToString()
+                                };
+
+                                sensors.Add(sensorStatus);
+
+                                // Count how many sensors are 'active' or 'inactive' based on checkForActive flag
+                                if (checkForActive)
+                                {
+                                    if (sensorStatus.Status.ToLower() == "active")
+                                    {
+                                        statusCount++;
+                                    }
+                                }
+                                else
+                                {
+                                    if (sensorStatus.Status.ToLower() == "inactive")
+                                    {
+                                        statusCount++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+
+            // Check if all sensors are inactive
+            bool allInactive = !checkForActive && statusCount == sensors.Count;
+
+            // Check if all sensors are active
+            bool allActive = checkForActive && statusCount == sensors.Count;
+
+            if (allInactive)
+            {
+                return Json(new { success = true, message = "All sensors are inactive.", allInactive = true }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (allActive)
+            {
+                return Json(new { success = true, message = "All sensors are active.", allActive = true }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { success = false, message = $"There are {statusCount} sensors in the desired status." }, JsonRequestBehavior.AllowGet);
+        }
+
+        //methods to set sensros to active and inactive
+        [HttpPost]
+        public JsonResult SetSensorsStatusInactive()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "UPDATE Sensor SET sensorStatus = 'inactive'";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public JsonResult SetSensorsStatusActive()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "UPDATE Sensor SET sensorStatus = 'active'";
+                    using(MySqlCommand cmd = new MySqlCommand( query, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

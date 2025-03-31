@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var userRole = Session["UserRole"] as string;
 }
 
 <html>
@@ -10,18 +11,41 @@
 </head>
 <body>
 
-    <!-- Link to the Sensors page -->
-    <div class="NavBar">
-        <h3>Sensor Management</h3>
-        @Html.ActionLink("DashBoard", "DashboardAdmin", "Admin")
-        @Html.ActionLink("Sensor Management", "sensor", "Admin")
-        @Html.ActionLink("User Management", "userManagement", "Admin")
-            
-            
+    <!--nav bar-->
+    <nav>
+        <ul>
+            <!-- Link visible to everyone -->
+            <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
 
+            <!-- Links for Admin and SuperAdmin -->
+            @if (userRole == "Admin" || userRole == "SuperAdmin")
+            {
+                <li>@Html.ActionLink("Dashboard For Admins", "DashboardAdmin", "Admin")</li>
+                <li>@Html.ActionLink("Sensor Management", "Sensor", "Admin")</li>
+            }
 
-    </div>
-    <!--End of NavBar-->
+            <!-- Links only for SuperAdmin -->
+            @if (userRole == "SuperAdmin")
+            {
+                <li>@Html.ActionLink("User Management", "UserManagement", "Admin")</li>
+            }
+
+            <!-- If user is logged in, show the logout link -->
+            @if (Session["UserName"] != null)
+            {
+                <li>Welcome, @Session["UserName"]</li>
+                <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+            }
+            else
+            {
+                <!-- If user is not logged in, show login/register links -->
+                <li>@Html.ActionLink("Login", "LogIn", "Home")</li>
+                <li>@Html.ActionLink("Register", "CreateAccount", "Home")</li>
+            }
+        </ul>
+    </nav>
+    <!--End of nvabar-->
     <!--Body Section-->
     <!--Search Bar to find sensor-->
     <div>

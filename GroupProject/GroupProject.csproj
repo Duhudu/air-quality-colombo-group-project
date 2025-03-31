@@ -201,6 +201,7 @@
     <Compile Include="Models\AirQualityData.cs" />
     <Compile Include="Models\Sensor.cs" />
     <Compile Include="Models\SensorAirQualityData.cs" />
+    <Compile Include="Models\SensorStatusModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -245,6 +246,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\User\AirQuality.js" />
+    <Content Include="Scripts\User\AirQualityC.js" />
     <Content Include="Scripts\User\LogAccount.js" />
     <Content Include="Scripts\User\profile.js" />
     <Content Include="Scripts\User\SignIn.js" />
@@ -265,10 +267,12 @@
     <Content Include="Views\Admin\UserManagement.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\CreateAccount.cshtml" />
-    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Admin\" />
+    <Folder Include="Content\User\" />
     <Folder Include="Views\Adminfeatures\" />
     <Folder Include="Views\CreateUser\" />
     <Folder Include="Views\DynamicData\" />

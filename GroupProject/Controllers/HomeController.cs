@@ -24,7 +24,7 @@ namespace GroupProject.Controllers
         // Display profile if the user is logged in
         public ActionResult Profile()
         {
-            // If user is logged in (session exists)
+            //// If user is logged in (session exists)
             if (Session["UserName"] != null)
             {
                 // Retrieve user details from the session
@@ -40,8 +40,9 @@ namespace GroupProject.Controllers
             else
             {
                 // If not logged in, redirect to login page
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "LogAccount");
             }
+            //return View();
         }
 
         // Logout action to clear session
@@ -50,6 +51,7 @@ namespace GroupProject.Controllers
             Session.Clear(); // Clear all session data
             return RedirectToAction("Login", "Account");
         }
+
     }
 
 

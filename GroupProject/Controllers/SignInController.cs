@@ -33,17 +33,16 @@ namespace GroupProject.Controllers
                         cmd.Parameters.AddWithValue("@Password", hashedPassword);
                         cmd.Parameters.AddWithValue("@Role", role);
                         cmd.Parameters.AddWithValue("@Status", status);
-                        int result = cmd.ExecuteNonQuery();
+                        int num =cmd.ExecuteNonQuery();
+                        if(num > 1)
+                        {
+                            num = 0;
+                        }
+                        
 
-                        if (result > 0)
-                        {
-                            return Json(new { success = true });
-                        }
-                        else
-                        {
-                            return Json(new { success = false, error = "Failed to create user." });
-                        }
                     }
+                    return Json(new { success = true });
+
                 }
             }
             catch (Exception ex)

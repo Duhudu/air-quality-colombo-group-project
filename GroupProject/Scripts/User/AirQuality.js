@@ -95,15 +95,38 @@
 
         // Helper function to format the date correctly
         function formatDate(dateString) {
+            if (!dateString) {  // Check if dateString is null, undefined, or empty
+                return 'Invalid date'; // Return a default value if the dateString is invalid
+            }
+
             var timestamp = dateString.replace('/Date(', '').replace(')/', '');
+
+            // Check if the timestamp is a valid number before creating the Date object
             var date = new Date(parseInt(timestamp));
 
             if (isNaN(date.getTime())) {
-                return 'Invalid date';
+                return 'Invalid date';  // Return a default value if the date is invalid
             }
 
             return date.toLocaleDateString('en-GB');  // Format date (e.g., 'dd/mm/yyyy')
         }
+        //function formatDate(dateString) {
+        //    if (!dateString) {  // Check if dateString is null, undefined, or empty
+        //        return 'Invalid date'; // Return a default value if the dateString is invalid
+        //    }
+
+        //    var timestamp = dateString.replace('/Date(', '').replace(')/', '');
+
+        //    // Check if the timestamp is a valid number before creating the Date object
+        //    var date = new Date(parseInt(timestamp));
+
+        //    if (isNaN(date.getTime())) {
+        //        return 'Invalid date';  // Return a default value if the date is invalid
+        //    }
+
+        //    return date.toLocaleDateString('en-GB');  // Format date (e.g., 'dd/mm/yyyy')
+        //}
+
 
 
         // Loop through the sensor data and create markers

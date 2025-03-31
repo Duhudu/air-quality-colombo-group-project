@@ -54,7 +54,7 @@ namespace GroupProject
                     
                     //// Insert the generated data into the airqualityhistory table with the next timestamp
                     //InsertDataIntoDatabase(generatedData, nextTimestamp);
-                    // **Check if the sensor status is "active"** before processing it
+                    // Check if the sensor status is "active" before processing it
                     if (sensor.Status.ToLower() == "active")  // Status is "active", proceed
                     {
                         // Get the last data entry timestamp for the sensor

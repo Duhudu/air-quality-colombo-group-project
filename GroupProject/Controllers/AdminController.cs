@@ -23,8 +23,30 @@ namespace GroupProject.Controllers
         {
             // This will render 'sensor.cshtml' view
             return View();
-        } 
-        
+        }
+
+        public ActionResult Profile()
+        {
+            // If user is logged in (session exists)
+            //if (Session["UserName"] != null)
+            //{
+            //    // Retrieve user details from the session
+            //    string userName = Session["UserName"].ToString();
+            //    string userEmail = Session["UserEmail"]?.ToString();
+
+            //    // Send the data to the view
+            //    ViewBag.UserName = userName;
+            //    ViewBag.UserEmail = userEmail;
+
+            //    return View();
+            //}
+            //else
+            //{
+            //    // If not logged in, redirect to login page
+            //    return RedirectToAction("Login", "Account");
+            //}
+            return View();
+        }
 
     }
 }
