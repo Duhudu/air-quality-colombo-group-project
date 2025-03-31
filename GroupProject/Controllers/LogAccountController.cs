@@ -9,8 +9,8 @@ using System.Web.Mvc;
 
 namespace GroupProject.Controllers
 {
-    public class LogAccountController : Controller
-    {
-        
-    }
+	public class LogAccountController : Controller
+	{
+
+	}
 }
