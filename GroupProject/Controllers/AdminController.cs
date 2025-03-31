@@ -19,5 +19,12 @@ namespace GroupProject.Controllers
             // This will render 'sensor.cshtml' view
             return View();
         }
+        public ActionResult userManagement()
+        {
+            // This will render 'sensor.cshtml' view
+            return View();
+        } 
+        
+
     }
 }

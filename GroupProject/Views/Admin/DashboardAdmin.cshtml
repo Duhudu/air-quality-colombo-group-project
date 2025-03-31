@@ -7,21 +7,60 @@
 
 </head>
 <body>
+    <h1>Admin Page</h1>
     <!-- Link to the Sensors page -->
     <div class="NavBar">
-        <h3>Admin Home</h3>
+        <h3>Sensor Management</h3>
         @Html.ActionLink("DashBoard", "DashboardAdmin", "Admin")
         @Html.ActionLink("Sensor Management", "sensor", "Admin")
-        @*@Html.ActionLink("User Management", "userManagement", "Admin")
-        @Html.ActionLink("Create User", "createUser", "Admin")
-        @Html.ActionLink("Profile", "profile", "Admin")
-        @Html.ActionLink("Dashboard For user", "HomeForUser", "Views")*@
+        @Html.ActionLink("User Management", "userManagement", "Admin")
+        @Html.ActionLink("Profile", " LogAccount", "Home")
+        @*@Html.ActionLink("Profile", "profile", "Admin")*@
+        @*@Html.ActionLink("Dashboard For user", "HomeForUser", "Views")*@
 
 
     </div>
-
-    
-
+    <!--Body Section-->
+    <!--Number of Sensors in the System-->
+    <!--Active sensors-->
+    <div>
+        <h4>Active Sensors</h4>
+        <p id="activeSensors">Loading...</p>
+    </div>
+    <!--End of active sensors-->
+    <!--Inactive sensors-->
+    <div>
+        <h4>InActive Sensors</h4>
+        <p id="inActiveSensors">Loading...</p>
+    </div>
+    <!-- Graph Section: Bar Chart for Active/Inactive Sensors -->
+    <div>
+        <h4>Sensor Status Chart</h4>
+        <canvas id="sensorChart" width="150" height="50"></canvas>
+    </div>
+    <!--End of Sensor section-->
+    <!--Number of Users-->
+    <div>
+        <h4>Registered Users</h4>
+        <p id="totalUsers">Loading...</p>
+    </div>
+    <div>
+        <h4>Admin Accounts</h4>
+        <p id="adminAcc">Loading...</p>
+    </div>
+    <!--End of User Section-->
+    <!--Graph Section-->
+    <!--End of Graph Section-->
+    <!--End of body section-->
+    <!-- Footer -->
+    <!--End of Footer-->
+    <!--JS section-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--chart JS libray-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Link to the separate JS file -->
+    <script src="~/Scripts/Admin/Adminfeatures.js"></script>
+    <!--End of js section-->
 </body>
 </html>
 

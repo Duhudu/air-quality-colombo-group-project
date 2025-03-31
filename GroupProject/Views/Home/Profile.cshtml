@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userName = Session["UserName"] as string;
+    var userEmail = Session["UserEmail"] as string;
+}
+<html>
+<head>
+
+</head>
+<body>
+
+    <h2>Profile</h2>
+    <nav>
+        <ul>
+            <!-- Always show this link -->
+            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+
+            <!-- Show Login link if not logged in, else show Profile link -->
+            @if (Session["UserName"] == null)
+            {
+                <li><a href="@Url.Action("Login", "LogAccount")">Login</a></li>
+            }
+            else
+            {
+                <li><a href="@Url.Action("Profile", "Home")">Profile</a></li>
+            }
+        </ul>
+    </nav>
+
+    @if (userName != null)
+    {
+        <div>
+            <p><strong>Username:</strong> @userName</p>
+            <p><strong>Email:</strong> @userEmail</p>
+        </div>
+        <a href="@Url.Action("Logout", "LogAccount")">Logout</a>
+    }
+    else
+    {
+        <p>You are not logged in.</p>
+        <a href="@Url.Action("Login", "LogAccount")">Login</a>
+    }
+</body>
+</html>
+
+

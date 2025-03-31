@@ -173,16 +173,6 @@
 
     // Edit existing sensor data via AJAX
     function updateSensor(sensorData) {
-        // Get form data
-        //var sensorData = {
-        //    Name: $('#name').val(),
-        //    Location: $('#location').val(),
-        //    Status: $('#status').val(),
-        //    Latitude: parseFloat($('#latitude').val()),
-        //    Longitude: parseFloat($('#longitude').val()),
-        //    Id: $('#sensorForm').data('sensorId')
-
-        //};
         console.log("Updating sensor with ID: " + sensorData.id);
         console.log("Sensor Data:", sensorData);
 
@@ -212,7 +202,7 @@
 
         Swal.fire({
             title: 'Are you sure?',
-            text: 'You are about to delete this sensor!',
+            text: 'You are about to delete this sensor! All the AQI Data Related To This Sensor Will Be Deleted AS Well!!',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',

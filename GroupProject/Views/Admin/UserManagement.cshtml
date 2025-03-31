@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>User Managment Page</h1>
+    <!--Navbar-->
+    <!-- Link to the Sensors page -->
+    <div class="NavBar">
+
+        @Html.ActionLink("DashBoard", "DashboardAdmin", "Admin")
+        @Html.ActionLink("Sensor Management", "sensor", "Admin")
+        @Html.ActionLink("User Management", "userManagement", "Admin")
+        @*@Html.ActionLink("Create User", "createUser", "Admin")
+            @Html.ActionLink("Profile", "profile", "Admin")*@
+
+    </div>
+    <!--End of NavBar-->
+    <!--Body-->
+    <div class="user-filter">
+        <!--User Role Filter-->
+        <label for="userType">Select User Type: </label>
+        <select id="userType" name="userType">
+            <option value="All" selected>All Users</option>
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+        </select>
+
+
+        <!--Serach Bar-->
+        <label for="searchUser">Search User by Name: </label>
+        <input type="text" id="searchUser" name="searchUser" placeholder="Enter User Name" />
+        <button id="searchButton" type="button">Search</button>
+    </div>
+
+    <!--Dynamic Table-->
+    <table id="userTable" , border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <!--Add User Form-->
+    <div id="userForm">
+        <h3 id="formTitle">Add New User</h3>
+        <form id="userFormData">
+            <label for="name">User Name: </label>
+            <input type="text" id="name" name="name" required />
+            <br />
+            <label for="email">User Email: </label>
+            <input type="email" id="email" name="email" required />
+            <br />
+            <label for="password">User Password: </label>
+            <input type="password" id="password" name="password" required />
+            <br />
+            <!-- Hidden fields for default Role and Status -->
+            <input type="hidden" id="role" name="role" value="Admin" />
+            <input type="hidden" id="status" name="status" value="Enter" />
+            <button id="submitUser" type="button">Submit</button>
+        </form>
+
+    </div>
+    <!--End of Add User Form-->
+    <!--End of Body-->
+    <!--Footer-->
+    <!--End of footer-->
+    <!--JS section-->
+    <!-- Include jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+    <!-- Link to the separate JS file -->
+    <script src="~/Scripts/Admin/userManagement.js"></script>
+</body>
+</html>

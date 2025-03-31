@@ -29,46 +29,33 @@ namespace GroupProject.Controllers
 
                     // Base query
                     string query = @"
-                        SELECT 
-                            s.id AS SensorId,
-                            s.name AS SensorName, 
-                            s.location AS SensorLocation,
-                            s.sensorStatus AS SensorStatus,
-                            s.latitude AS SensorLatitude,
-                            s.longitude AS SensorLongitude,
-                            a.PM25,
-                            a.PM10,
-                            a.PM1,
-                            a.RH,
-                            a.Temp,
-                            a.Wind,
-                            a.Aqi,
-                            a.date AS ReadingDate
-                        FROM 
-                            Sensor s
-                        LEFT JOIN 
-                            airqualityhistory a ON s.id = a.sensor_id ";
-
-                    // Add filter conditions dynamically
-                    if (sensorId.HasValue)
-                    {
-                        query += " AND s.id = @sensorId";
-                    }
-                    if (dateFrom.HasValue)
-                    {
-                        query += " AND a.date >= @dateFrom";
-                    }
-                    if (dateTo.HasValue)
-                    {
-                        query += " AND a.date <= @dateTo";
-                    }
+                    SELECT 
+                        s.id AS SensorId,
+                        s.name AS SensorName, 
+                        s.location AS SensorLocation, 
+                        s.sensorStatus AS SensorStatus, 
+                        s.latitude AS SensorLatitude, 
+                        s.longitude AS SensorLongitude, 
+                        a.PM25,
+                        a.PM10,
+                        a.PM1,
+                        a.RH,
+                        a.Temp,
+                        a.Wind,
+                        a.Aqi,
+                        a.date AS ReadingDate
+                    FROM 
+                        Sensor s
+                    LEFT JOIN 
+                        airqualityhistory a ON s.id = a.sensor_id ";
 
 
-                    
+
+
 
                     using (MySqlCommand cmd = new MySqlCommand(query, connection))
                     {
-                       
+
 
                         MySqlDataReader reader = cmd.ExecuteReader();
 

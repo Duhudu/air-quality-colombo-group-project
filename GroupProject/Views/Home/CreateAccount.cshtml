@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Welcome</h1>
+    <div id="newUserForm">
+        <h3 id="formTitle">Add New User</h3>
+        <form id="userFormData">
+            <label for="name">User Name: </label>
+            <input type="text" id="name" name="name" required />
+            <br />
+            <label for="email">User Email: </label>
+            <input type="email" id="email" name="email" required />
+            <br />
+            <label for="password">User Password: </label>
+            <input type="password" id="password" name="password" required />
+            <br />
+            <!-- Hidden fields for default Role and Status -->
+            <input type="hidden" id="role" name="role" value="User" />
+            <input type="hidden" id="status" name="status" value="Enter" />
+            <button id="submitUser" type="button">Submit</button>
+        </form>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+    <!-- Link to the separate JS file -->
+    <script src="~/Scripts/User/SignIn.js"></script>
+
+</body>
+</html>
+
