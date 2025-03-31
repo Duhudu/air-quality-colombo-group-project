@@ -32,10 +32,10 @@ namespace GroupProject.Controllers
                         SELECT 
                             s.id AS SensorId,
                             s.name AS SensorName, 
-                            s.location AS SensorLocation, 
-                            s.sensorStatus AS SensorStatus, 
-                            s.latitude AS SensorLatitude, 
-                            s.longitude AS SensorLongitude, 
+                            s.location AS SensorLocation,
+                            s.sensorStatus AS SensorStatus,
+                            s.latitude AS SensorLatitude,
+                            s.longitude AS SensorLongitude,
                             a.PM25,
                             a.PM10,
                             a.PM1,
@@ -49,6 +49,19 @@ namespace GroupProject.Controllers
                         LEFT JOIN 
                             airqualityhistory a ON s.id = a.sensor_id ";
 
+                    // Add filter conditions dynamically
+                    if (sensorId.HasValue)
+                    {
+                        query += " AND s.id = @sensorId";
+                    }
+                    if (dateFrom.HasValue)
+                    {
+                        query += " AND a.date >= @dateFrom";
+                    }
+                    if (dateTo.HasValue)
+                    {
+                        query += " AND a.date <= @dateTo";
+                    }
 
 
                     
