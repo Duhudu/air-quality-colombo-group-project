@@ -4,12 +4,14 @@
 
 <html>
 <head>
-
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Admin/DashboardAdminCss.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h1>Admin Page</h1>
     <!-- Link to the Sensors page -->
-    <div class="NavBar">
+    <div class="NavBar navbar">
         <h3>Sensor Management</h3>
         @Html.ActionLink("DashBoard", "DashboardAdmin", "Admin")
         @Html.ActionLink("Sensor Management", "sensor", "Admin")
