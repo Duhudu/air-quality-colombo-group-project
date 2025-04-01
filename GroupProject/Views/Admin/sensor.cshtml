@@ -5,26 +5,29 @@
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css" rel="stylesheet" />
-
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Admin/sensorCss.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
 
     <!-- Link to the Sensors page -->
-    <div class="NavBar">
-        <h3>Sensor Management</h3>
+    <h1>Sensor Management</h1>
+    <div class="NavBar navbar" ">
+
         @Html.ActionLink("DashBoard", "DashboardAdmin", "Admin")
         @Html.ActionLink("Sensor Management", "sensor", "Admin")
         @Html.ActionLink("User Management", "userManagement", "Admin")
-            
-            
+
+
 
 
     </div>
     <!--End of NavBar-->
     <!--Body Section-->
     <!--Search Bar to find sensor-->
-    <div>
+    <div class="search-bar">
         <label for="searchSensor">Seach Sensor by Location</label>
         <input type="text" id="searchSensor" name="searchSensor" placeholder="Enter Sensor Loaction" />
         <button id="searchSensorBtn" type="button">Search</button>
@@ -51,7 +54,7 @@
     <!--End of table section-->
     <!--Form For Add New and Edit Form -->
     <div id="sensorForm">
-        <h3 id="formTitle">Add New Sensor</h3>
+        <h3 id="formTitle" class="newSensor">Add New Sensor</h3>
         <button id="backToAddNew" type="button" style="display:none;">Back to Add New</button>
         <form id="sensorFormData">
             <label for="name">Sensor Name: </label>
