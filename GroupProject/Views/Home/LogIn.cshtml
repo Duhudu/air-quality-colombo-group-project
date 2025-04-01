@@ -2,15 +2,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <html>
 <head>
 
 </head>
 <body>
     <h1>Welcome</h1>
-    <
+    <form method="post" action="@Url.Action("Login","LogAccount")">
+        <div>
+            <label for="Name">Username:</label>
+            <input type="text" id="Name" name="Name" required />
+        </div>
+
+        <div>
+            <label for="Password">Password:</label>
+            <input type="password" id="Password" name="Password" required />
+        </div>
+
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>
+
 
 </body>
 </html>
-
