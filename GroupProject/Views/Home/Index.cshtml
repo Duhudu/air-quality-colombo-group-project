@@ -6,8 +6,8 @@
 <html>
 <head>
     <!-- Leaflet CSS (Always ensure this is included first for styling) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="~/Content/User/IndexCss.css" rel="stylesheet" type="text/css" />
     @*<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />*@
 
     <!-- Additional custom styles (if any) -->
@@ -26,7 +26,7 @@
 </head>
 <body>
     <!--nav bar-->
-    <nav>
+    <nav class="navbar">
         <ul>
             <!-- Link visible to everyone -->
             <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
@@ -48,9 +48,9 @@
             <!-- If user is logged in, show the logout link -->
             @if (Session["UserName"] != null)
             {
-                
+
                 <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
-                
+
             }
             else
             {
@@ -68,6 +68,8 @@
     @*<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>**@
     <div id="map"></div>
 
+
+
     <!-- Placeholder for the chart -->
     <canvas id="sensorChart"></canvas>
 
@@ -80,6 +82,12 @@
 
     <!-- Link to your custom JS file (ensure the path is correct) -->
     <script src="~/Scripts/User/AirQualityC.js"></script>
+
+    <footer class="footer">
+        <p><h6>  "Innovating Air Quality for a Sustainable Sri Lanka" </h6></p>
+        <p>© 2025 NSBM Green University | PUSL2020 Coursework </p>
+
+    </footer>
 
 </body>
 </html>

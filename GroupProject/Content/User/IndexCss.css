@@ -1,22 +1,29 @@
-﻿/* General Reset & Body */
+﻿/* === Base Reset & Typography === */
 body {
     margin: 0;
     padding: 0;
     background-color: #121212;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #f0f0f0;
-    text-align: center; /* Center all text by default */
+    text-align: center;
     text-transform: uppercase;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Center container with max width */
+    body > *:not(.footer) {
+        flex: 1;
+    }
+
+/* === Centered Container === */
 .container {
     max-width: 100%;
     margin: 0 10px;
     padding: 20px;
 }
 
-/* Navigation Bar */
+/* === Navbar === */
 .navbar {
     background-color: #1f1f1f;
     padding: 15px 20px;
@@ -52,18 +59,42 @@ body {
             transform: scale(1.1);
         }
 
-/* Headers */
+/* === Headers === */
 h1, h2, h3 {
     color: #ffffff;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 h1 {
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     padding-top: 30px;
 }
 
-/* Buttons */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 60px auto;
+    margin-top: 90px;
+}
+
+    .search-bar label {
+        font-weight: bold;
+        color: #f0f0f0;
+    }
+
+    .search-bar input[type="text"] {
+        flex: 0 1 300px;
+        padding: 10px;
+        background-color: #1c1c1c;
+        color: #fff;
+        border: 1px solid #444;
+        border-radius: 4px;
+        margin: auto 20px;
+    }
+
+/* === Buttons === */
 button, .btn {
     background-color: #333;
     color: #f0f0f0;
@@ -80,25 +111,26 @@ button, .btn {
         transform: scale(1.1);
     }
 
-/* Inputs */
+/* === Forms === */
 input, select, textarea {
     background-color: #1c1c1c;
     color: #ffffff;
     border: 1px solid #444;
-    padding: 8px;
+    padding: 10px;
     border-radius: 4px;
-    margin-bottom: 10px;
     width: 80%;
     margin: 10px auto;
     display: block;
 }
 
-/* Tables */
+/* === Tables === */
 table {
     width: 90%;
     border-collapse: collapse;
-    margin: 20px auto;
+    margin: 30px auto;
     background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
     table th, table td {
@@ -112,56 +144,58 @@ table {
         color: #ffffff;
     }
 
-/* Links */
-a {
-    color: #42a5f5;
-    text-decoration: none;
-}
-
-    a:hover {
-        text-decoration: underline;
-    }
-
-/* Card-like Panels */
+/* === Cards/Panels === */
 .card {
     background-color: #1e1e1e;
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    margin: 20px auto;
-    width: 80%;
+    margin: 30px auto;
+    width: 85%;
 }
 
+.newSensor {
+    padding-top: 80px;
+    padding-bottom: 15px;
+}
 
-/* Container for the cards to display them side by side */
-.card-container {
+/* Flexbox layout for the container holding the table and form */
+.container-flex {
     display: flex;
-    justify-content: center; /* Optional: Adds space between cards */
-    gap: 20px; /* Space between the cards */
-    margin: 20px auto; /* Margin around the container */
-    padding-bottom: 50px;
+    justify-content: space-between; /* Optional: Space out the items */
+    gap: 20px; /* Optional: Adds space between the form and table */
+    margin-top: 50px; /* Adjust the margin as needed */
+    justify-items: center;
 }
 
-/* Each individual card */
-.sensor-card {
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    width: 80%; /* Adjust the width */
-    max-width: 400px; /* Adjust width to fit two cards on one line */
+/* Optional: Set widths for each section */
+#sensorTable {
+    width: 55%; /* Adjust this width as needed */
+    padding-left: 100px;
+}
+
+#sensorForm {
+    width: 35%; /* Adjust this width as needed */
+}
+
+
+/* === About Page Specific Styles === */
+.card p {
+    font-size: 16px;
+    text-transform: none;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 15px;
     text-align: center;
 }
 
-    /* Title of each card (Active and Inactive Sensors) */
-    .sensor-card h4 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        color: #f0f0f0;
-    }
-
-    /* Paragraph text for the sensor status (Loading...) */
-    .sensor-card p {
-        font-size: 1.2rem;
-        color: #b0b0b0;
-    }
+/* === Footer === */
+.footer {
+    background-color: #1f1f1f;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Push the footer to the bottom */
+    border-top: 1px solid #333;
+    font-size: 14px;
+}

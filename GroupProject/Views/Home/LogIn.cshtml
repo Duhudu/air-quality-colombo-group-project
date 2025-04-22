@@ -4,6 +4,7 @@
 
 <html>
 <head>
+    <link href="~/Content/User/LogInCss.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -18,6 +19,12 @@
             <label for="Password">Password:</label>
             <input type="password" id="Password" name="Password" required />
         </div>
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div style="color: red; font-weight: bold;">
+                @ViewBag.ErrorMessage
+            </div>
+        }
 
         <div>
             <button type="submit">Login</button>

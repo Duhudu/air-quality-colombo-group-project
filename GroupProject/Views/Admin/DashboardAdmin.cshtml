@@ -10,10 +10,10 @@
     <link href="~/Content/Admin/DashboardAdminCss.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>Admin Page</h1>
+
     <!-- Link to the Sensors page -->
     <!--nav bar-->
-    <nav>
+    <nav class="navbar">
         <ul>
             <!-- Link visible to everyone -->
             <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
@@ -46,6 +46,7 @@
             }
         </ul>
     </nav>
+    <h1>Admin Page</h1>
     <!--End of nvabar-->
     <!--Body Section-->
     <!--Btn to stop data gen-->
@@ -53,31 +54,33 @@
     <!--Btn to start the data gen-->
     <button id="startDataGen" type="button">Start Data Generation</button>
     <!--Number of Sensors in the System-->
-    <!--Active sensors-->
-    <div>
-        <h4>Active Sensors</h4>
-        <p id="activeSensors">Loading...</p>
-    </div>
-    <!--End of active sensors-->
-    <!--Inactive sensors-->
-    <div>
-        <h4>InActive Sensors</h4>
-        <p id="inActiveSensors">Loading...</p>
+    <div class="card-container">
+        <!--Active sensors-->
+        <div class="sensor-card">
+            <h4>Active Sensors</h4>
+            <p id="activeSensors">Loading...</p>
+        </div>
+        <!--End of active sensors-->
+        <!--Inactive sensors-->
+        <div class="sensor-card">
+            <h4>InActive Sensors</h4>
+            <p id="inActiveSensors">Loading...</p>
+        </div>
+        <!--End of Sensor section-->
+        <!--Number of Users-->
+        <div class="sensor-card">
+            <h4>Registered Users</h4>
+            <p id="totalUsers">Loading...</p>
+        </div>
+        <div class="sensor-card">
+            <h4>Admin Accounts</h4>
+            <p id="adminAcc">Loading...</p>
+        </div>
     </div>
     <!-- Graph Section: Bar Chart for Active/Inactive Sensors -->
     <div>
         <h4>Sensor Status Chart</h4>
         <canvas id="sensorChart" width="150" height="50"></canvas>
-    </div>
-    <!--End of Sensor section-->
-    <!--Number of Users-->
-    <div>
-        <h4>Registered Users</h4>
-        <p id="totalUsers">Loading...</p>
-    </div>
-    <div>
-        <h4>Admin Accounts</h4>
-        <p id="adminAcc">Loading...</p>
     </div>
     <!--End of User Section-->
     <!--Graph Section-->

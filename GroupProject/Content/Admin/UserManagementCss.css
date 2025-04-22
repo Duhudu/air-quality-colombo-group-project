@@ -1,22 +1,24 @@
-﻿/* General Reset & Body */
+﻿body {
+}
+/* === Base Reset & Typography === */
 body {
     margin: 0;
     padding: 0;
     background-color: #121212;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #f0f0f0;
-    text-align: center; /* Center all text by default */
+    text-align: center;
     text-transform: uppercase;
 }
 
-/* Center container with max width */
+/* === Centered Container === */
 .container {
     max-width: 100%;
     margin: 0 10px;
     padding: 20px;
 }
 
-/* Navigation Bar */
+/* === Navbar === */
 .navbar {
     background-color: #1f1f1f;
     padding: 15px 20px;
@@ -52,7 +54,7 @@ body {
             transform: scale(1.1);
         }
 
-/* Headers */
+/* === Headers === */
 h1, h2, h3 {
     color: #ffffff;
     margin-bottom: 10px;
@@ -60,10 +62,11 @@ h1, h2, h3 {
 
 h1 {
     padding-bottom: 50px;
-    padding-top: 30px;
+    padding-top: 25px;
 }
 
-/* Buttons */
+
+/* === Buttons === */
 button, .btn {
     background-color: #333;
     color: #f0f0f0;
@@ -80,25 +83,26 @@ button, .btn {
         transform: scale(1.1);
     }
 
-/* Inputs */
+/* === Forms === */
 input, select, textarea {
     background-color: #1c1c1c;
     color: #ffffff;
     border: 1px solid #444;
-    padding: 8px;
+    padding: 10px;
     border-radius: 4px;
-    margin-bottom: 10px;
     width: 80%;
     margin: 10px auto;
     display: block;
 }
 
-/* Tables */
+/* === User Management Table === */
 table {
     width: 90%;
     border-collapse: collapse;
-    margin: 20px auto;
+    margin: 30px auto;
     background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
     table th, table td {
@@ -112,56 +116,35 @@ table {
         color: #ffffff;
     }
 
-/* Links */
-a {
-    color: #42a5f5;
-    text-decoration: none;
-}
-
-    a:hover {
-        text-decoration: underline;
-    }
-
-/* Card-like Panels */
+/* === User Card/Panels === */
 .card {
     background-color: #1e1e1e;
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    margin: 20px auto;
-    width: 80%;
+    margin: 30px auto;
+    width: 85%;
 }
 
-
-/* Container for the cards to display them side by side */
-.card-container {
+/* === Layout for User Management === */
+.container-flex {
     display: flex;
-    justify-content: center; /* Optional: Adds space between cards */
-    gap: 20px; /* Space between the cards */
-    margin: 20px auto; /* Margin around the container */
-    padding-bottom: 50px;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 50px;
+    justify-items: center;
 }
 
-/* Each individual card */
-.sensor-card {
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    width: 80%; /* Adjust the width */
-    max-width: 400px; /* Adjust width to fit two cards on one line */
-    text-align: center;
+#userTable {
+    width: 55%; /* Adjust this width as needed */
+    padding-left: 100px;
 }
 
-    /* Title of each card (Active and Inactive Sensors) */
-    .sensor-card h4 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        color: #f0f0f0;
-    }
+#userForm {
+    width: 35%; /* Adjust the width as needed */
+}
 
-    /* Paragraph text for the sensor status (Loading...) */
-    .sensor-card p {
-        font-size: 1.2rem;
-        color: #b0b0b0;
-    }
+.newUser {
+    padding-top: 60px;
+    padding-bottom: 20px;
+}

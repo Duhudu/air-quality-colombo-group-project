@@ -1,5 +1,84 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "About Page";
+    var userRole = Session["UserRole"] as string;
 }
 
+<html>
+<head>
 
+
+    <link href="~/Content/User/IndexCss.css" rel="stylesheet" type="text/css" />
+
+
+
+</head>
+<body>
+    <!--nav bar-->
+    <nav class="navbar">
+        <ul>
+            <!-- Link visible to everyone -->
+            <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+
+            <!-- Links for Admin and SuperAdmin -->
+            @if (userRole == "Admin" || userRole == "SuperAdmin")
+            {
+                <li>@Html.ActionLink("Dashboard For Admins", "DashboardAdmin", "Admin")</li>
+                <li>@Html.ActionLink("Sensor Management", "Sensor", "Admin")</li>
+            }
+
+            <!-- Links only for SuperAdmin -->
+            @if (userRole == "SuperAdmin")
+            {
+                <li>@Html.ActionLink("User Management", "UserManagement", "Admin")</li>
+            }
+
+            <!-- If user is logged in, show the logout link -->
+            @if (Session["UserName"] != null)
+            {
+
+                <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+
+            }
+            else
+            {
+                <!-- If user is not logged in, show login/register links -->
+                <li>@Html.ActionLink("Login", "LogIn", "Home")</li>
+                <li>@Html.ActionLink("Register", "CreateAccount", "Home")</li>
+            }
+        </ul>
+    </nav>
+    <!--End of nvabar-->
+
+    <div class="container">
+        <h1>About This Project</h1>
+        <div class="card">
+            <p>
+                The Real-time Air Quality Monitoring Dashboard is a web-based platform developed as part of the PUSL2020 coursework at NSBM Green University.
+                The system is designed to simulate and visualize Air Quality Index (AQI) levels across the Colombo Metropolitan Area.
+            </p>
+            <p>
+                Our goal is to provide users—including citizens, environmental researchers, and government agencies—with timely and accessible air quality data.
+                Using simulated sensors, the dashboard offers live AQI readings and historical trends to raise awareness and support environmental decision-making.
+            </p>
+            <p>
+                Key technologies used include ASP.NET Core, SQL Server, JavaScript, Leaflet for mapping, and a robust backend simulation engine that generates synthetic sensor data.
+            </p>
+            <p>
+                This project was built collaboratively by a team of students under the supervision of Dr. Rasika Ranaweera and Ms. Pavithra Subhashini.
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p><h6>  "Innovating Air Quality for a Sustainable Sri Lanka" </h6></p>
+        <p>© 2025 NSBM Green University | PUSL2020 Coursework </p>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+    <!-- Link to the separate JS file -->
+    <script src="~/Scripts/Admin/userManagement.js"></script>
+</body>
+</html>

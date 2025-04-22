@@ -14,7 +14,7 @@
 <body>
 
     <!--nav bar-->
-    <nav>
+    <nav class="navbar">
         <ul>
             <!-- Link visible to everyone -->
             <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
@@ -47,6 +47,7 @@
             }
         </ul>
     </nav>
+    <h1>Sensor Management</h1>
     <!--End of nvabar-->
     <!--Body Section-->
     <!--Search Bar to find sensor-->
@@ -58,48 +59,50 @@
     </div>
     <!--End of Search bar section-->
     <!--Dynamic Table to show Sensors-->
-    <table id="sensorTable" border="1">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Location</th>
-                <th>Status</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Rows will be dynamically created here -->
-        </tbody>
-    </table>
+    <div class="container-flex">
+        <table id="sensorTable" border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Longitude</th>
+                    <th>Latitude</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically created here -->
+            </tbody>
+        </table>
 
-    <!--End of table section-->
-    <!--Form For Add New and Edit Form -->
-    <div id="sensorForm">
-        <h3 id="formTitle" class="newSensor">Add New Sensor</h3>
-        <button id="backToAddNew" type="button" style="display:none;">Back to Add New</button>
-        <form id="sensorFormData">
-            <label for="name">Sensor Name: </label>
-            <input type="text" id="name" name="name" required />
-            <br />
-            <label for="location">Sensor Location: </label>
-            <input type="text" id="location" name="location" required />
-            <br />
-            <label for="latitude">Sensor Latitude: </label>
-            <input type="text" id="latitude" name="latitude" required />
-            <br />
-            <label for="longitude">Sensor Longitude: </label>
-            <input type="text" id="longitude" name="longitude" required />
-            <br />
-            <label for="status">Status: </label>
-            <select id="status" name="status">
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-            </select>
-            <br />
-            <button id="submitSensor" type="button">Submit</button>
-        </form>
+        <!--End of table section-->
+        <!--Form For Add New and Edit Form -->
+        <div id="sensorForm">
+            <h3 id="formTitle" class="newSensor">Add New Sensor</h3>
+            <button id="backToAddNew" type="button" style="display:none;">Back to Add New</button>
+            <form id="sensorFormData">
+                <label for="name">Sensor Name: </label>
+                <input type="text" id="name" name="name" required />
+                <br />
+                <label for="location">Sensor Location: </label>
+                <input type="text" id="location" name="location" required />
+                <br />
+                <label for="latitude">Sensor Latitude: </label>
+                <input type="text" id="latitude" name="latitude" required />
+                <br />
+                <label for="longitude">Sensor Longitude: </label>
+                <input type="text" id="longitude" name="longitude" required />
+                <br />
+                <label for="status">Status: </label>
+                <select id="status" name="status">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+                <br />
+                <button id="submitSensor" type="button">Submit</button>
+            </form>
+        </div>
     </div>
     <!--End of Form-->
     <!--End of Body Section-->
